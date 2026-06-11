@@ -61,7 +61,6 @@ fun EditAmonestacionScreen(
                         .fillMaxWidth()
                         .padding(16.dp)
                 ) {
-                    // Nombres
                     OutlinedTextField(
                         value = state.nombres,
                         onValueChange = {
@@ -77,7 +76,6 @@ fun EditAmonestacionScreen(
 
                     Spacer(Modifier.height(8.dp))
 
-                    // Razón
                     OutlinedTextField(
                         value = state.razon,
                         onValueChange = {
@@ -93,7 +91,6 @@ fun EditAmonestacionScreen(
 
                     Spacer(Modifier.height(8.dp))
 
-                    // Monto
                     OutlinedTextField(
                         value = state.monto?.toString() ?: "",
                         onValueChange = {
