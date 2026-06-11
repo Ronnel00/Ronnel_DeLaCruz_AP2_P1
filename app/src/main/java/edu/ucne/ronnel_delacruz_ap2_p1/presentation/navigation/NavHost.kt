@@ -4,22 +4,30 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import edu.ucne.ronnel_delacruz_ap2_p1.presentation.edit.EditScreen
-import edu.ucne.ronnel_delacruz_ap2_p1.presentation.list.ListScreen
+import androidx.navigation.toRoute
+import edu.ucne.ronnel_delacruz_ap2_p1.presentation.edit.EditAmonestacionScreen
+import edu.ucne.ronnel_delacruz_ap2_p1.presentation.list.AmonestacionListScreen
 
 @Composable
 fun AppNavHost(navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
-        startDestination = Screen.List
+        startDestination = Screen.AmonestacionList
     ) {
-        composable<Screen.List> {
-            ListScreen(
-                goToEdit = { navHostController.navigate(Screen.Edit) }
+        composable<Screen.AmonestacionList> {
+            AmonestacionListScreen(
+                goToAmonestacion = { id ->
+                    navHostController.navigate(Screen.Amonestacion(id))
+                },
+                createAmonestacion = {
+                    navHostController.navigate(Screen.Amonestacion(0))
+                }
             )
         }
-        composable<Screen.Edit> {
-            EditScreen(
+        composable<Screen.Amonestacion> {
+            val args = it.toRoute<Screen.Amonestacion>()
+            EditAmonestacionScreen(
+                amonestacionId = args.amonestacionId,
                 onNavigateBack = { navHostController.navigateUp() }
             )
         }
